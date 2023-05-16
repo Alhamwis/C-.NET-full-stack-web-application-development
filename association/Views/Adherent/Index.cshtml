@@ -1,0 +1,263 @@
+﻿@model List<association.Models.Adherent>
+@{
+    ViewBag.Title = "Adherent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Session["run"] = "1";
+    Session["see"] = "1";
+
+    if (Session["qui"] == "12345FAHMI")
+    {
+        <style>
+            .vil {
+                display: none;
+            }
+
+            .rol {
+                display: none;
+            }
+            .password {
+                display: none;
+            }
+
+            .email {
+                display: none;
+            }
+            .datenee {
+                display: none;
+            }
+
+        </style>
+
+
+    }
+    if (Session["qui"] == "12345BOULASSEL")
+    {
+        <style>
+            .vil {
+                display: none;
+            }
+
+            .rol {
+                display: none;
+            }
+
+            .password {
+                display: none;
+            }
+
+            .datenee {
+                display: none;
+            }
+            .numtele{
+                display:none;
+            }
+
+        </style>
+
+    }
+
+}
+
+<br />
+<h4>Gestion des Adherents</h4>
+<div class="alert alert-@ViewBag.alerta"> - - <b>@ViewBag.res</b> - - </div>
+<form action="/Adherent/Index" method="post">
+    <!--<table>
+        <tr>
+            <td style="padding: 10px">code_adherent:</td>
+            <td style="padding: 10px"><input class="form-control" maxlength="8" type="text" name="code_adherent" id="code_adherent" required /></td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">nom_complet:</td>
+            <td style="padding: 10px"><input class="form-control" type="text" name="nom_complet" id="nom_complet" required /></td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">sexe:</td>
+            <td style="padding: 10px"><input class="form-control" type="text" name="sexe" id="sexe" required /></td>
+        </tr>-->
+    @* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *@
+    <!--<tr>
+        <td style="padding: 10px">num_tel:</td>
+        <td style="padding: 10px"><input class="form-control" maxlength="8" type="text" name="num_tel" id="num_tel" required /></td>
+    </tr>
+    <tr>
+        <td style="padding: 10px">Email:</td>
+        <td style="padding: 10px"><input class="form-control" type="text" name="Email" id="Email" required /></td>
+    </tr>
+    <tr>
+        <td style="padding: 10px">password:</td>
+        <td style="padding: 10px"><input class="form-control" type="text" name="password" id="password" required /></td>
+    </tr>-->
+    @* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *@
+
+    <!--<tr>
+        <td style="padding: 10px">date_naissance:</td>
+        <td style="padding: 10px"><input class="form-control" maxlength="8" type="text" name="date_naissance" id="date_naissance" required /></td>
+    </tr>
+    <tr>
+        <td style="padding: 10px">date_inscr:</td>
+        <td style="padding: 10px"><input class="form-control" type="text" name="date_inscr" id="date_inscr" required /></td>
+    </tr>
+    <tr>
+        <td style="padding: 10px">Villes:</td>
+        <td style="padding: 10px"><input class="form-control" type="text" name="Villes" id="Villes" required /></td>
+    </tr>-->
+    @* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *@
+
+    <!--<tr>
+        <td style="padding: 10px">paid:</td>
+        <td style="padding: 10px"><input class="form-control" maxlength="8" type="text" name="paid" id="paid" required /></td>
+    </tr>
+    <tr>
+        <td style="padding: 10px">role:</td>
+        <td style="padding: 10px"><input class="form-control" type="text" name="role" id="role" required /></td>
+    </tr>
+    <tr>
+        <td style="padding: 10px">Paye:</td>
+        <td style="padding: 10px"><input class="form-control" type="text" name="Paye" id="Paye" required /></td>
+    </tr>-->
+    @* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *@
+
+
+
+    <!--<tr>
+            <td style="padding: 10px"></td>
+            <td style="padding: 10px">
+                <button class="btn btn-success" type="submit" name="btn1" id="btn1"><span class="glyphicon glyphicon-save"> Update</span></button>
+                <button class="btn btn-primary" type="reset" name="btn2" id="btn2"><span class="glyphicon glyphicon-remove"> Delete</span></button>
+                <a class="btn btn-danger" href="~/Adherent/Index"><span class="glyphicon glyphicon-backward"> Return</span></a>
+            </td>
+        </tr>
+    </table>-->
+    <button class="btn btn-primary" type="button" onclick="location.href='https://localhost:44323/inscription.aspx?code_adherent=0'"><span class="glyphicon glyphicon-user"> Ajouter Adherent</span></button>
+</form>
+<br />
+<br />
+<table id="tabla_Adherent" class="table table-bordered" s>
+    <thead style="background-color: rgb(34,139,34); color: white">
+        <tr>
+
+            <th>Id</th>
+
+            <th>Nom Complet</th>
+
+            <th>sexe</th>
+
+            <th class="numtele">Phone</th>
+            <th class="email">Email</th>
+            <th class="password">Password</th>
+            <th class="datenee">date de naissance</th>
+
+            <th >date d'inscription</th>
+
+            <th class="vil">Ville</th>
+            <th class="paid">paid</th>
+            <th class="rol">Role</th>
+            <th class="paye">Paye</th>
+            <th style="text-align: center">Action</th>
+        </tr>
+    </thead>
+    <tbody style="background-color: white">
+        @foreach (var f in Model)
+        {
+            <tr>
+
+                <td>@f.code_adherent</td>
+
+                <td>@f.nom_complet</td>
+
+                <td>@f.sexe</td>
+
+                <td class="numtele">@f.num_tel</td>
+                <td class="email">@f.Email</td>
+                <td class="password">@f.password</td>
+                <td class="datenee">@f.date_naissance</td>
+
+                <td>@f.date_inscr</td>
+
+                <td class="vil">@f.Villes</td>
+                <td class="paid">@f.paid</td>
+                <td class="rol">@f.role</td>
+                <td class="paye">@f.Paye</td>
+                <td style="text-align: center">
+                    <button class="btn btn-warning" type="button" id="btn_act" name="btn_act" onclick="location.href='https://localhost:44323/inscription.aspx?code_adherent=@f.code_adherent'"><span class="glyphicon glyphicon-edit"> Modifié</span></button>
+                    <button class="btn btn-danger" type="button" id="btn_eli" name="btn_eli" onclick="location.href='../Adherent/Delete?code_adherent=@f.code_adherent'"><span class="glyphicon glyphicon-trash"> Supprimer</span></button>
+                    <button class="btn btn-info btn-lg" type="button" id="btn_pr" name="btn_pr" onclick="location.href='https://localhost:44323/Print.aspx?nom_complet=@f.nom_complet'"><span class="glyphicon glyphicon-print"> Print</span></button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('#tabla_Adherent').DataTable();
+    });
+</script>
+@if (Session["qui"] == "12345FAHMI")
+{
+    <script>
+        //document.getElementById("btn_act").disabled = true;
+        //document.getElementById("btn_eli").disabled = true;
+        const ul = document.querySelectorAll('#btn_act');
+        const lu = document.querySelectorAll('#btn_eli');
+
+        for (let i = 0; i <= ul.length - 1; i++) {
+            ul[i].disabled = true;
+            lu[i].disabled = true;
+        }
+        function RemoveFromTable(tblID, VALUE) {
+            $("#" + tblID).find("td:contains('" + VALUE + "')").closest('tr').remove();
+        }
+        RemoveFromTable('tabla_Adherent', 'No Paye');
+
+    </script>
+}
+
+@if (Session["qui"] == "12345BOULASSEL")
+{
+    <script>
+        //document.getElementById("btn_act").disabled = true;
+        //document.getElementById("btn_eli").disabled = true;
+        const ul = document.querySelectorAll("#btn_act");
+        const lu = document.querySelectorAll("#btn_eli");
+
+        for (let i = 0; i <= ul.length - 1; i++) {
+            ul[i].disabled = true;
+            lu[i].disabled = true;
+        }
+        var table = document.getElementsByTagName("table")[0];
+        var tablebody = table.getElementsByTagName("tbody")[0];
+        var rows = tablebody.getElementsByTagName("tr");
+        for (i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName("td");
+            var result = cells[11].childNodes[0].data;
+            const word = result;
+            const char = "P";
+            if (word.startsWith(char) == true || word.length == 4) {
+                rows[i].closest('tr').remove();
+            }
+        }
+
+        for (i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName("td");
+            var result = cells[9].childNodes[0].data;
+            if (result + 0 != 0) {
+                rows[i].closest('tr').remove();
+            }
+        }
+
+        for (i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName("td");
+            var result = cells[11].childNodes[0].data;
+            const word = result;
+            const char = "N";
+            if (word.startsWith(char) == false) {
+                rows[i].closest('tr').remove();
+            }
+        }
+</script>
+
+}
+

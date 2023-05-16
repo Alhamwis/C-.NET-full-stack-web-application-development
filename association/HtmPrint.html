@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.esm.js"></script>
+    <style>
+        .wrapper1 {
+            height: 210px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            margin: 20px;
+            border: 3px dashed;
+            width: 425px;
+            flex-wrap: wrap;
+            align-content: flex-end;
+            border-radius: 7px;
+        }
+
+        body {
+            background-color: rgba(245,245,245,255);
+        }
+        h6{
+            display:inline-block;
+        }
+        input[type="file"] {
+            margin-left: -9px;
+        }
+
+        img {
+            margin-right: 20px;
+        }
+        .titre {
+            position: fixed;
+        }
+        #al {
+            position: absolute;
+            left: 47px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper1">
+        <div class="titre">
+            <p class="lead" style="margin-left: 207px; font-style: oblique; font-family: cursive;">Humain<span style="color: forestgreen">CO</span></p>
+        </div>
+
+        <div id="al">
+            <div>
+                <div>
+                    Nom:<h6 id="tes" style="color: #000"></h6>
+                </div>
+
+                <div>
+                    Ville: <h6 id="tes1" style="color: #000"></h6>
+                </div>
+            </div>
+            <div>
+                <div>
+                    Role:<h6 id="tes2" style="color: #000"></h6>
+                </div>
+                <div>
+                    Code:<h6 id="demo" style="color: #000"></h6>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <button onclick="screenshot()">print</button>
+</body>
+<script type="text/javascript">
+    function validateFileType() {
+        var fileName = document.getElementById("fileName").value;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+            //TO DO
+        } else {
+            alert("Only jpg/jpeg and png files are allowed!");
+        }
+    }
+    var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src);// free memory
+        }
+    };
+    function screenshot() {
+        html2canvas(document.querySelector(".wrapper1")).then((canvas) => {
+            document.body.appendChild(canvas);
+        });
+        alert("obtenez  la carte HumainCO en tant qu'image en cliquant à droite sur la deuxième div et choisissez enregistrer en tant qu'image!");
+    }
+
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const nom_complet = urlParams.get('nom_complet');
+    const role = urlParams.get('role');
+    const ville = urlParams.get('ville');
+    const Code = urlParams.get('Code');
+    console.log(nom_complet);
+    console.log(role);
+    console.log(ville);
+    console.log(Code);
+    document.getElementById("tes").innerText = nom_complet;
+    document.getElementById("tes1").innerText = ville;
+    document.getElementById("tes2").innerText = role;
+
+    document.getElementById("demo").innerHTML = Math.floor(Math.random() * 1100) + 1000;
+    document.getElementById("demo").innerHTML += "-" + Math.floor(Math.random() * 2100) - 1000;
+    document.getElementById("demo").innerHTML += "-" + Math.floor(Math.random() * 3100) - 1100;
+
+</script>
+
+</html>

@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/style-starter.css" rel="stylesheet" />
+    <a href="~/fonts/fontawesome-webfont.eot"></a>
+    <a href="~/fonts/fontawesome-webfont.ttf"></a>
+    <a href="~/fonts/fontawesome-webfont.woff"></a>
+    <a href="~/fonts/fontawesome-webfont.woff2"></a>
+    <a href="~/fonts/FontAwesome.otf"></a>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/js/jquery.countup.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/jquery.waypoints.min.js"></script>
+    <script src="~/js/owl.carousel.js"></script>
+    <script src="~/js/theme-change.js"></script>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+    <link href="~/css/style-starter.css" rel="stylesheet" />
+    <!-- CSS only -->
+    <!-- JavaScript Bundle with Popper -->
+
+
+</head>
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand mr-lg-5" href="index.html">
+                        Humain<span>CO</span>
+                    </a>
+                </h1>
+                <!-- if logo is image enable this
+                <a class="navbar-brand" href="#index.html">
+                    <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+                </a> -->
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+                        data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                    </span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-auto">
+                        @if (Session["qui"] != "adherent")
+                        {
+                            <li class="nav-item" style="display:block">
+                                <a class="nav-link" href="https://localhost:44323/Adherent/Index">HumainCO</a>
+                            </li>
+                        }
+                        <li style="padding = 20px !important; display: block; margin-left: 15px;">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })</li>
+
+                        <li style="padding = 20px !important; display: block; margin-left: 15px;">@Html.ActionLink("About ", "About", "Home", new { @class = "nav-link" })</li>
+                        @if (Session["qui"] == "adherent")
+                        {
+                            <li class="nav-item" style="display:none">
+                                <a class="nav-link" href="https://localhost:44323/inscription.aspx">Contact</a>
+                            </li>
+                            <li class="nav-item" style="display:block">
+                                <a class="nav-link" href="https://localhost:44323/MesInfos.aspx?Email=@Session["adhd"]">My Profile</a>
+                            </li>
+                            <li class="nav-item" style="display:block">
+                                <a class="nav-link" href="https://localhost:44323/authentification.aspx">Se Deconnecter</a>
+                            </li>
+                        }
+
+
+                        @*<li style="padding = 20px !important; display: block;">@Html.ActionLink("Services", "Services", "Home", new { @class = "nav-link" })</li>*@
+                    </ul>
+                </div>
+                <div class="d-lg-block d-none">
+                    <a href="#" class="btn btn-style btn-secondary ml-lg-3">Free Quote</a>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!-- //header -->
+    <div>
+        @RenderBody()
+    </div>
+    <!--/w3l-footer-29-main-->
+    <section class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-lg-4">
+                <div class="row footer-top-29">
+                    <div class="footer-list-29 col-lg-4">
+                        <h6 class="footer-title-29">About Us</h6>
+                        <p class="pr-lg-5">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
+                            voluptate rem ullam dolore nisi voluptatibus esse quasi.Integer sit amet mattis quam.
+                        </p>
+                        <div class="main-social-footer-29 mt-4">
+                            <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
+                            <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
+                            <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
+                            <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 col-sm-4 footer-list-29 footer-2 mt-lg-0 mt-5">
+
+                        <ul>
+                            <h6 class="footer-title-29">Useful Links</h6>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#"> Blog posts</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </div>
+                   
+                    <div class="col-lg-3 col-md-6 col-sm-8 footer-list-29 footer-1 mt-lg-0 mt-5">
+                        <h6 class="footer-title-29">Contact Us</h6>
+                        <ul>
+                            <li>
+                                <p>
+                                    <span class="fa fa-map-marker"></span> Province, #49436 block, #888 Benslimane
+                                </p>
+                            </li>
+                            <li><a href="tel:+7-800-999-800"><span class="fa fa-phone"></span> +(1)-706-907-8989</a></li>
+                            <li>
+                                <a href="mailto:eddinesief7@mail.com" class="mail">
+                                    <span class="fa fa-envelope-open-o"></span>
+                                    eddinesief7@mail.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w3l-footer-29-main w3l-copyright">
+        <div class="container">
+            <div class="bottom-copies">
+                <p class="copy-footer-29 text-center">
+                    © 2022 HumainCO. All rights reserved. Design by <a href="https://w3layouts.com/" target="_blank">
+                        Province.
+                    </a>
+                </p>
+            </div>
+        </div>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            <span class="fa fa-angle-up"></span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+        <!-- /move top -->
+    </section>
+    <!-- //footer-29 block -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+</body>
+</html>

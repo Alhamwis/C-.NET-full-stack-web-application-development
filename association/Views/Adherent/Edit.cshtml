@@ -1,0 +1,131 @@
+﻿@model association.Models.Adherent
+@{
+    ViewBag.Title = "Edit - Adherent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Session["see"] = "11";
+}
+<style type="text/css">
+    .glyphicon-calendar {
+        font-size: 15pt;
+    }
+
+    .input-group {
+        width: 180px;
+        margin-top: 30px;
+    }
+</style>
+</head>
+<body>
+    <!-- Bootstrap -->
+    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css' media="screen" />
+    <!-- Bootstrap -->
+    <!-- Bootstrap DatePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- Bootstrap DatePicker -->
+    <script type="text/javascript">
+        $(function () {
+            $('#date_naissance').datepicker({
+                format: "dd/mm/yyyy"
+            });
+        });
+    </script>
+
+
+    <br />
+    <h4>Gestion des Adherents</h4>
+    <div class="alert alert-@ViewBag.alerta"> - - <b>@ViewBag.res</b> - - </div>
+    <form action="/Adherent/Edit" method="post">
+        <input type="hidden" id="code_adherent" name="code_adherent" value="@Model.code_adherent" />
+        <table>
+            <tr>
+                <td style="padding: 10px">Nom_Complet:</td>
+                <td style="padding: 10px"><input value="@Model.nom_complet" class="form-control" type="text" name="nom_complet" id="nom_complet" required /></td>
+            </tr>
+            <tr>
+                <td style="padding: 10px">sexe:</td>
+                @if (Model.sexe == "Homme")
+                {
+                    <td style="padding: 10px">
+
+                        <input type="radio" name="sexe" value="Homme" checked="checked" style="margin:5px" />
+                        <text>Homme</text>
+                        <input type="radio" name="sexe" value="Femme" style="margin:5px" />
+                        <text>Femme</text>
+                    </td>
+
+                }
+                else
+                {
+                    <td style="padding: 10px ">
+                        <input type="radio" name="sexe" value="Homme" style="margin:5px" />
+                        <text>Homme</text>
+                        <input type="radio" name="sexe" value="Femme" checked="checked" style="margin:5px" />
+                        <text>Femme</text>
+                    </td>
+
+                }
+
+            </tr>
+            <tr>
+                <td style="padding: 10px">num_tel:</td>
+                <td style="padding: 10px"><input value="@Model.num_tel" class="form-control" type="text" name="num_tel" id="num_tel" required /></td>
+            </tr>
+
+            @* ------------------------------------------------------------------------------------------------------------------------------------------------  *@
+            <tr>
+                <td style="padding: 10px">Email:</td>
+                <td style="padding: 10px"><input value="@Model.Email" class="form-control" type="text" name="Email" id="Email" required /></td>
+            </tr>
+            <tr>
+                <td style="padding: 10px">password:</td>
+                <td style="padding: 10px"><input value="@Model.password" class="form-control" type="text" name="password" id="password" required /></td>
+            </tr>
+            <tr>
+                <td style="padding: 10px">date_naissance:</td>
+                <td style="padding: 10px">
+                    <input type="text" value="@Model.date_naissance" class="form-control" name="date_naissance" id="date_naissance">
+                </td>
+            </tr>
+
+            @* ------------------------------------------------------------------------------------------------------------------------------------------------  *@
+            <tr>
+                <td style="padding: 10px">date_inscr:</td>
+                <td style="padding: 10px"><input value="@Model.date_inscr" class="form-control" type="text" name="date_inscr" id="date_inscr" required readonly /></td>
+            </tr>
+
+            <tr>
+                <td style="padding: 10px">Villes:</td>
+                <td style="padding: 10px"><input value="@Model.Villes" class="form-control" type="text" name="Villes" id="Villes" required /></td>
+            </tr>
+
+            @* ------------------------------------------------------------------------------------------------------------------------------------------------  *@
+            <tr>
+                <td style="padding: 10px">paid:</td>
+                <td style="padding: 10px"><input value="@Model.paid" class="form-control" type="text" name="paid" id="paid" required /></td>
+            </tr>
+            <tr>
+                <td style="padding: 10px">role:</td>
+                <td style="padding: 10px"><input value="@Model.role" class="form-control" type="text" name="role" id="role" required /></td>
+            </tr>
+
+
+            @* ------------------------------------------------------------------------------------------------------------------------------------------------  *@
+            <tr>
+                <td style="padding: 10px"></td>
+                <td style="padding: 10px">
+                    <button class="btn btn-success" type="submit" name="btn1" id="btn1"><span class="glyphicon glyphicon-save"> update</span></button>
+                    <button class="btn btn-primary" type="reset" name="btn2" id="btn2"><span class="glyphicon glyphicon-remove">  reset</span></button>
+                    <a class="btn btn-danger" href="~/Adherent/Index"><span class="glyphicon glyphicon-backward"> Retourner</span></a>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+
+    @*<td style="padding: 10px">Femme @Html.RadioButton("sexe", @Model.sexe)</td>*@
+    @*<td style="padding: 10px">Homme @Html.RadioButton("sexe", @Model.sexe)</td>*@
+    @*<td style="padding: 10px"><input value="@Model.date_naissance" class="form-control" type="date" name="date_naissance" id="date_naissance" required /></td>*@
